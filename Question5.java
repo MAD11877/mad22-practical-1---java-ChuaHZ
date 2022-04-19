@@ -1,3 +1,4 @@
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Question5
@@ -27,6 +28,34 @@ public class Question5
      */
      
     Scanner in = new Scanner(System.in);
-    
+    int count = in.nextInt();
+    int[] list = new int[count];
+    for(int i = 0 ; i < count; i ++){
+      int number = in.nextInt();
+      list[i] = number;
+    }
+
+    HashMap<Integer,Integer> hm = new HashMap<Integer,Integer>();
+    int max_count = 1;
+    int max = 0;
+    for(int i = 0 ; i < count ; i ++){
+      if(hm.get(list[i]) != null){
+        int val = hm.get(list[i]);
+        val++;
+        hm.put(list[i],val);
+
+        if(val > max){
+          max_count = val;
+          max = list[i];
+
+        }
+      }
+      else{
+        hm.put(list[i],1);
+
+      }
+    }
+    System.out.println(max);
+    in.close();
   }
 }
